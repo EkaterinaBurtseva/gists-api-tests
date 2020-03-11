@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import org.aeonbits.owner.ConfigFactory;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ReadGistsInfoApiService extends ApiBaseService {
     static String ALL_PUBLIC_GISTS = ALL_GISTS + "/public";
@@ -50,10 +49,14 @@ public class ReadGistsInfoApiService extends ApiBaseService {
     }
 
     @Step("Get starred gists for user {userName}")
-    public AssertableResponse getListOfAllStarredGistsForUser(String user) {
+    public AssertableResponse getListOfAllStarredGistsForUser() {
         return new AssertableResponse(setup()
-                .get(String.format("/users/%s%s", user, ALL_STARRED_GISTS))
+                .get(String.format("/users/%s%s", userName, ALL_STARRED_GISTS))
         );
+    }
+
+    public List<String> getAllListByField(String field){
+      return ((List<String>)getListOfAllGistsForUser().response.body().path(field));
     }
 
 }

@@ -13,7 +13,7 @@ public class ReadGistsInfoByIdService extends ApiBaseService {
     }
 
     @Step("Get gist by id {} and revision {}")
-    public AssertableResponse getGistById(String id, String revision) {
+    public AssertableResponse getGistByIdAndRevision(String id, String revision) {
         return new AssertableResponse(setup()
                 .get(String.format("%s/%s/%s", ALL_GISTS, id, revision))
         );

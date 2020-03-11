@@ -16,8 +16,8 @@ public class UpdatesApiService extends ApiBaseService {
     }
 
     @Step("Add new gists")
-    public AssertableResponse addGists(GistInfo gistInfo,String sid) {
-        return new AssertableResponse(setup().cookies(getCookie(sid))
+    public AssertableResponse addGists(GistInfo gistInfo) {
+        return new AssertableResponse(setup()
                 .when()
                 .body(gistInfo)
                 .post(ALL_GISTS)
@@ -25,8 +25,8 @@ public class UpdatesApiService extends ApiBaseService {
     }
 
     @Step("Update gist by id {}")
-    public AssertableResponse updateGist(GistInfo gistInfo,String sid, String id) {
-        return new AssertableResponse(setup().cookies(getCookie(sid))
+    public AssertableResponse updateGist(GistInfo gistInfo, String id) {
+        return new AssertableResponse(setup()
                 .when()
                 .body(gistInfo)
                 .patch(String.format("%s/%s", ALL_GISTS, id))
@@ -34,17 +34,17 @@ public class UpdatesApiService extends ApiBaseService {
     }
 
     @Step("Set star to gist by id {}")
-    public AssertableResponse setStarredGistById(GistInfo gistInfo,String sid, String id) {
-        return new AssertableResponse(setup().cookies(getCookie(sid))
+    public AssertableResponse setStarredGistById(GistInfo gistInfo) {
+        return new AssertableResponse(setup()
                 .when()
                 .body(gistInfo)
-                .put(String.format("%s/%s/star", ALL_GISTS, id))
+                .put(String.format("%s/%s/star", ALL_GISTS ))
         );
     }
 
     @Step("Fork a gist by id {}")
-    public AssertableResponse forkGistById(GistInfo gistInfo,String sid, String id) {
-        return new AssertableResponse(setup().cookies(getCookie(sid))
+    public AssertableResponse forkGistById(GistInfo gistInfo, String id) {
+        return new AssertableResponse(setup()
                 .when()
                 .body(gistInfo)
                 .put(String.format("%s/%s/fork", ALL_GISTS, id))

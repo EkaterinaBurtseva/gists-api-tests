@@ -18,4 +18,11 @@ public class DeleteOperationGistIdService extends ApiBaseService {
                 .delete(String.format("%s/%s/star", ALL_GISTS, id))
         );
     }
+
+    @Step("Get gists for unathorized user")
+    public AssertableResponse getGistsForUnathorizedUser() {
+        return new AssertableResponse(setupUnAuthorized()
+                .delete(String.format(ALL_GISTS))
+        );
+    }
 }

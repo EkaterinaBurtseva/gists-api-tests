@@ -23,6 +23,12 @@ public class ApiBaseService {
                     .contentType(ContentType.JSON)
                     .filters(getFilters());
         }
+    protected RequestSpecification setupUnAuthorized() {
+        return RestAssured
+                .given()
+                .contentType(ContentType.JSON)
+                .filters(getFilters());
+    }
 
         private List<Filter> getFilters() {
             if (config.logging())

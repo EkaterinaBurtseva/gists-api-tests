@@ -1,11 +1,18 @@
 package services;
 
 import assertions.AssertableResponse;
+import configs.ProjectConfigs;
 import io.qameta.allure.Step;
+import org.aeonbits.owner.ConfigFactory;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReadGistsInfoApiService extends ApiBaseService {
     static String ALL_PUBLIC_GISTS = ALL_GISTS + "/public";
     static String ALL_STARRED_GISTS = ALL_GISTS + "/starred";
+    ProjectConfigs config = ConfigFactory.create(ProjectConfigs.class, System.getProperties());
+    String userName = config.username();
 
     @Step("Get all gists")
     public AssertableResponse getListOfAlllGists() {
@@ -28,21 +35,21 @@ public class ReadGistsInfoApiService extends ApiBaseService {
         );
     }
 
-    @Step("Get all gists for user {}")
-    public AssertableResponse getListOfAllGistsForUser(String user) {
+    @Step("Get all gists for user {userName}")
+    public AssertableResponse getListOfAllGistsForUser() {
         return new AssertableResponse(setup()
-                .get(String.format("/users/%s%s", user, ALL_GISTS))
+                .get(String.format("/users/%s%s", userName, ALL_GISTS))
         );
     }
 
-    @Step("Get public gists for user {}")
-    public AssertableResponse getListOfAllPublicGistsForUser(String user) {
+    @Step("Get public gists for user {userName}")
+    public AssertableResponse getListOfAllPublicGistsForUser() {
         return new AssertableResponse(setup()
-                .get(String.format("/users/%s%s", user, ALL_PUBLIC_GISTS))
+                .get(String.format("/users/%s%s", userName, ALL_PUBLIC_GISTS))
         );
     }
 
-    @Step("Get starred gists for user {}")
+    @Step("Get starred gists for user {userName}")
     public AssertableResponse getListOfAllStarredGistsForUser(String user) {
         return new AssertableResponse(setup()
                 .get(String.format("/users/%s%s", user, ALL_STARRED_GISTS))

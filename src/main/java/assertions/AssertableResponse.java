@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class AssertableResponse {
-    private final Response response;
+    public final Response response;
 
     public AssertableResponse(Response response) {
         this.response = response;
@@ -16,6 +16,7 @@ public class AssertableResponse {
 
     @Step("api response should have {condition}")
     public AssertableResponse shouldHave(Condition condition) {
+
 //        log.info("about to check condition: {}", condition);
 
         condition.check(response);

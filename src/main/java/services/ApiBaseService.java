@@ -20,14 +20,15 @@ public class ApiBaseService {
         protected RequestSpecification setup() {
             return RestAssured
                     .given().auth().oauth2(config.authToken())
-                    .contentType(ContentType.JSON);
+                    .contentType(ContentType.JSON)
+                    .filters(getFilters());
         }
 
-//        private List<Filter> getFilters() {
-//            if (config.logging())
-//                return Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter(), new AllureRestAssured());
-//            else
-//                return Collections.singletonList(new AllureRestAssured());
-//
-//        }
+        private List<Filter> getFilters() {
+            if (config.logging())
+                return Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter(), new AllureRestAssured());
+            else
+                return Collections.singletonList(new AllureRestAssured());
+
+        }
 }

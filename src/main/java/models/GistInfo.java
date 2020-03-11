@@ -16,6 +16,8 @@ public class GistInfo {
     @JsonProperty("public")
     boolean publicState;
     @JsonProperty("files")
-    List<String> files;
+    Object files;
+    @JsonProperty("fileContent")
+    FileInfoContent fileInfoContent;
 
 }

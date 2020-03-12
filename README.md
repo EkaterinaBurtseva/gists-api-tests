@@ -19,7 +19,7 @@
 * Run test (`gradlew test`) or through ide
 * Open html report (```gralew allureReport```) or automatically generated report at /build/reports/tests/test/index.html
 
-![allure example](https://drive.google.com/file/d/1FCjrxgrPUb69w1KTt0rHPRZ70dkIgrRV/view?usp=sharing)
+![allure example from tests](.\general-api-tests\src\main\resources\allure.png)
 
 
 ## TODO
@@ -30,6 +30,9 @@
 * add naming for tests
 * add Spring
 * add more detailed logging by @Slf4j
+
+## Possible issues
+* lombok plugin : required constructors for @RequiredArgsConstructor -> project need to be rebuild
 
 ## Links
 * [allure](http://allure.qatools.ru/)

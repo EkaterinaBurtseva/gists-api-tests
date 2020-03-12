@@ -19,7 +19,7 @@
 * Run test (`gradlew test`) or through ide
 * Open html report (```gralew allureReport```) or automatically generated report at /build/reports/tests/test/index.html
 
-![allure example from tests](https://drive.google.com/file/d/1FCjrxgrPUb69w1KTt0rHPRZ70dkIgrRV/view?usp=sharing)
+![allure-example](https://user-images.githubusercontent.com/8155318/76505865-d7de7e00-6452-11ea-8cfe-74e7b07b3670.png)
 
 
 ## TODO
